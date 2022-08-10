@@ -1,0 +1,10 @@
+resource "aws_s3_bucket" "alb_logs" {
+  bucket = "acs730-alb-log"
+
+  tags = merge(
+    local.default_tags, {
+      Name = "${var.prefix}-alb-log"
+    }
+  )
+}
+
