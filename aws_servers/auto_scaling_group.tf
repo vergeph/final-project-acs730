@@ -1,9 +1,7 @@
 resource "aws_autoscaling_group" "final" {
   name     = "${var.prefix}-${var.env}-as-group"
   min_size = 1
-  #  desired_capacity = 1
   desired_capacity = var.env == "dev" ? 2 : 3
-  #  desired_capacity = lookup(var.desired_capacity, var.env)
   max_size = 4
 
    vpc_zone_identifier = [var.private_subnet_ids[0], var.private_subnet_ids[1], var.private_subnet_ids[2]]
