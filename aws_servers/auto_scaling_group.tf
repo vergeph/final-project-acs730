@@ -1,3 +1,4 @@
+# Create Autoscaling Group for all environment
 resource "aws_autoscaling_group" "final" {
   name     = "${var.prefix}-${var.env}-as-group"
   min_size = 1
