@@ -1,3 +1,4 @@
+#aws application load balancing listener
 resource "aws_lb_listener" "alb" {
   #  name              = "${var.prefix}-${var.env}-alb-listener"
   load_balancer_arn = aws_lb.alb.arn
