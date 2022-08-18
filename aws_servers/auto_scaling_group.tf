@@ -1,3 +1,4 @@
+#Create Auto Scaling Group 
 resource "aws_autoscaling_group" "final" {
   name     = "${var.prefix}-${var.env}-as-group"
   min_size = 1
@@ -21,29 +22,7 @@ resource "aws_autoscaling_group" "final" {
 
   target_group_arns = ["${aws_lb_target_group.alb_tg.arn}"]
 
-  #  enabled_metrics = [
-  #    "GroupMinSize",
-  #    "GroupMaxSize",
-  #    "GroupDesiredCapacity",
-  #    "GroupInServiceInstances",
-  #    "GroupTotalInstances"
-  #  ]
-
-  # metrics_granularity = "1Minute"
-
-
-  #  vpc_zone_identifier = [
-  #    "${aws_subnet.demosubnet.id}",
-  #    "${aws_subnet.demosubnet1.id}"
-  #  ]
-
-
-  # Required to redeploy without an outage.
-  #  lifecycle {
-  #    create_before_destroy = true
-  #  }
-
-  tag {
+   tag {
     key                 = "Name"
     value               = "${var.prefix}-${var.env}-auto-scailing-group"
     propagate_at_launch = true
